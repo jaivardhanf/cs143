@@ -6,6 +6,5 @@ pairs = data.flatmap(lambda line: [(m,s) for m in line.split(":")[1].split(",") 
 pairs1 = pairs.map(lambda p:(p,1))
 BookPairs = pairs1.reduceByKey(lambda a,b:a+b)
 
-HighfreqPairs = BookPairs.filter(lambda (((bookid1, bookid2), count): count > 20).collect()
+BookPairs.saveAsTextFile("output")
 
-HighfreqPairs.saveAsTextFile("output")
